@@ -1,0 +1,62 @@
+#include<iostream>
+using namespace std;
+class Queue;
+template <class T>
+class Student
+{
+	int roll;
+	char name[20];
+	public:
+     friend istream & operator >>(istream &in,Student &s);
+      friend ostream & operator <<(ostream &out,Student &s);
+};
+  istream & operator >>(istream &in,Student &s)
+		{
+			cout<<"\nenter roll:";
+			cin>>s.roll;
+			cout<<"\nenter name:";
+			cin>>s.name;
+			return in;
+		}
+ ostream & operator <<(ostream &out,Student &s)
+{
+			cout<<"\nroll no.:"<<s.roll;
+			cout<<"\nname:"<<s.name;
+			return out;
+}
+class Queue
+{
+	T q[20];
+	int re;
+	int fr;
+	int size;
+	public:
+       Student s;
+	   Queue(int n)
+	   {
+	   	re=fr=-1;
+	   	size=n;
+	   }
+	   void enq(T q)
+	   {
+	   	cin>>q;
+	   	if(re==fr && re==-1)
+	   	fr++;
+	   	re++;
+	   	q[re]=x;
+	   }
+	   void deq()
+	   {
+	   	T x;
+	    x=q[fr];
+	    fr--;
+		cout<<x;
+	   }		
+};
+int main()
+{
+	Student s;
+	Queue<Student>q(3);
+	q.enq(s);
+	q.deq();
+}

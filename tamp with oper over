@@ -1,0 +1,98 @@
+#include<iostream>
+using namespace std;
+class Time
+{
+	int h,m,s;
+	public:
+  int operator <(Time t)
+  {
+  	if(h<t.h)
+  	return 1;
+  	else
+  	return -1;
+  }
+     friend istream & operator >>(istream &in,Time &);
+      friend ostream & operator <<(ostream &out,Time &);
+};
+  istream & operator >>(istream &in,Time &t)
+		{
+			cout<<"\nenter h:";
+			cin>>t.h;
+			cout<<"\nenter m:";
+			cin>>t.m;
+			cout<<"\nenter s:";
+			cin>>t.s;
+			return in;
+		}
+ ostream & operator <<(ostream &out,Time &t)
+{
+			cout<<"\nh:"<<t.h;
+			cout<<"\nm:"<<t.m;
+			cout<<"\ns:"<<t.s;
+			return out;
+}
+template <class T>
+void partition(T a[],int low,int high)
+{
+	int mid;
+	if(low!=high)
+	{
+		mid = (low+high)/2;
+		partition(a,low,mid);
+		partition(a,mid+1,high);
+		mergesort(a,low,mid,high);
+	}
+}
+template <class T>
+
+void mergesort(T a[],int low,int mid,int high)
+{
+	T final[50];
+	int k,i,j;
+	i = low;
+	j = mid+1;
+	k = low;
+	while(i<=mid&&j<=high)
+	{
+		if(a[i]<a[j])
+		{
+			final[k] = a[i];
+			i++;
+			k++;
+		}
+		else
+		{
+			final[k] = a[j];
+			j++;
+			k++;
+		}	
+	}
+	while(i<=mid)
+	{
+		final[k] = a[i];
+			i++;
+			k++;
+	}
+	while(j<=high)
+	{
+		final[k] = a[j];
+			j++;
+			k++;
+	}
+	for(i=low;i<=high;i++)
+		a[i] = final[i];
+}
+int main()
+{
+	Time t[4];
+int i;
+	for(i=0;i<4;i++)
+	{
+		cout<<"\n enter for t["<<i<<"]:";
+	cin>>t[i];
+	//cout<<t[i];
+    }
+    partition<Time>(t,0,3);
+    for(i=0;i<4;i++)
+    cout<<t[i];
+}

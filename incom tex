@@ -1,0 +1,87 @@
+#include<iostream>
+using namespace std;
+class Tax
+{
+	protected:
+	int itax;
+	int amt;
+	public:
+		virtual void get_details()=0;
+		virtual void calcu_details()=0;
+};
+class Income:public Tax
+{
+	protected:
+		int inc;
+		int per;
+		public:
+			void get_details()
+			{
+				cout<<"\nenter id:";
+				cin>>itax;
+				cout<<"\nenter income:";
+				cin>>inc;
+				cout<<"\nenter percentage:";
+				cin>>per;
+			}
+			void calcu_details()
+			{
+				amt=(inc*per)/100;
+				cout<<"\n amt to be paid:"<<amt;
+			}
+};
+class Sales:public Tax
+{
+	protected:
+		int sale;
+		int per;
+		public:
+			void get_details()
+			{
+				cout<<"\nenter id:";
+				cin>>itax;
+				cout<<"\nenter sale:";
+				cin>>sale;
+				cout<<"\nenter percentage:";
+				cin>>per;
+			}
+			void calcu_details()
+			{
+				amt=(sale*per)/100;
+				cout<<"\n amt to be paid:"<<amt;
+			}
+};
+class Service:public Tax
+{
+	protected:
+		int mrp;
+		int per;
+		public:
+			void get_details()
+			{
+				cout<<"\nenter id:";
+				cin>>itax;
+				cout<<"\nenter :";
+				cin>>mrp;
+				cout<<"\nenter percentage:";
+				cin>>per;
+			}
+			void calcu_details()
+			{
+				amt=(mrp*per)/100;
+				cout<<"\n amt to be paid:"<<amt;
+			}
+};
+
+int main()
+{
+	Income i;
+	i.get_details();
+	i.calcu_details();
+	Service s;
+	s.get_details();
+	s.calcu_details();
+	Sales sa;
+	sa.get_details();
+	sa.calcu_details();
+}

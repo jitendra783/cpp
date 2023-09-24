@@ -1,0 +1,85 @@
+class Software
+{
+	char sname[20];
+	int sid;
+	int version;
+	public:
+		void readsoft();
+		void writesoft();
+};
+class Operating_system
+{
+	char os_name[20];
+	int ver;
+	char company[20];
+	int oid;
+	public:
+		Software s1,s2;
+		void get_os();
+		s1.readsoft();
+		s2.readsoft();
+		void print_os();
+		s1.writesoft();
+		s2.writesoft();
+};
+//////////////////////////////////////////
+class Waterbody
+{
+int qty_wat;
+char spe_of_fish[20];
+int diversity;
+public:
+void get_data();
+void put_data();
+};
+class River:public Waterbody
+{
+char rname[20];
+char origin_loc[20];
+int len_riv;
+public:
+void get_river();
+void put_river(); 
+};
+class Dam
+{
+int dam_id;
+char dam_name[20];
+public:
+Waterbody w1;
+void get_dam();
+w1.get_data();
+void put_dam();
+w1.put_data();
+};
+///////////////////////////////////////
+class Entity
+{
+int eid;
+char ename[20];
+char property[30];
+public:
+void get_entity();
+void put_entity();
+};
+class Relation:public Entity
+{
+int rid;
+char rtype;
+public:
+void get_relation();
+void put_relation();
+}
+class Graph
+{
+char gname[20];
+int no_of_vertices;
+public:
+Entity e;
+void get_graph();
+void put_graph();
+e.get_entity();
+e.put_entity();
+};
+
+

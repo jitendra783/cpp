@@ -1,0 +1,130 @@
+#include<iostream>
+using namespace std;
+class Loan
+{
+	protected:
+	int prin;
+	int lid;
+	int rate;
+	int time;
+	public:
+		virtual void get_ldata()
+		{
+		  cout<<"enter lid:";
+		cin>>lid;
+		cout<<"enter principle:";
+		cin>>prin;
+	    cout<<"enter rate:";
+		cin>>rate;
+        cout<<"enter time:";
+		cin>>time;
+		}
+		virtual void calculate_amt()
+		{
+			int amt=(prin*rate*time)/100;
+			cout<<"\namt is:"<<amt;
+		}
+};
+class Personal:public Loan
+{
+	int no_of_depen;
+	int amt;
+	public:
+	void get_ldata()
+	{
+		cout<<"enter lid:";
+		cin>>lid;
+		cout<<"enter principle:";
+		cin>>prin;
+	    cout<<"enter rate:";
+		cin>>rate;
+        cout<<"enter time:";
+		cin>>time;
+		cout<<"enter no_of_dependents:";
+		cin>>no_of_depen;
+	}
+	void calculate_amt()
+	{
+		amt=prin+(rate*time)/100+(no_of_depen*rate)/100;
+	    cout<<"the amt is:"<<amt;
+    }
+	};
+class Home:public Loan
+{
+	int l;
+	int b;
+	int amt;
+	public:
+	void get_ldata()
+	{
+		cout<<"enter lid:";
+		cin>>lid;
+		cout<<"enter principle:";
+		cin>>prin;
+	    cout<<"enter rate:";
+		cin>>rate;
+        cout<<"enter time:";
+		cin>>time;
+		cout<<"enter length:";
+		cin>>l;
+		cout<<"enter breadth:";
+		cin>>b;
+	}
+	void calculate_amt()
+	{
+		amt=prin+(rate*time)/100+(l*b*rate)/100;
+    	cout<<"the amt is:"<<amt;
+	}
+};
+class Car:public Loan
+{
+	int con;
+	int price;
+	int amt;
+	public:
+	void get_ldata()
+	{
+		cout<<"enter lid:";
+		cin>>lid;
+		cout<<"enter principle:";
+		cin>>prin;
+	    cout<<"enter rate:";
+		cin>>rate;
+        cout<<"enter time:";
+		cin>>time;
+		cout<<"enter consumption:";
+		cin>>con;
+		cout<<"enter price:";
+		cin>>price;
+	}
+	void calculate_amt()
+	{
+		amt=prin+(rate*time)/100+(con*price*rate)/100;
+	}
+	void print_res()
+	{
+		cout<<"the amt is:"<<amt;
+	}
+};
+int main()
+{
+	Loan *l;
+//l->get_ldata();
+//l->calculate_amt();
+Personal p;
+l=&p;
+l->get_ldata();
+l->calculate_amt();	
+//l->print_res();
+Home h;
+l=&h;
+l->get_ldata();
+l->calculate_amt();	
+//l->print_res();
+Car c;
+l=&c;
+l->get_ldata();
+l->calculate_amt();	
+//l->print_res();
+}
+

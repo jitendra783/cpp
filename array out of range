@@ -1,0 +1,37 @@
+#include<iostream>
+using namespace std;
+class Safearray
+{
+	int arr[10];
+	public:
+		class ArrayOutofRangeError
+		{
+			int val;
+			char s[20];
+			public:
+				ArrayOutofRangeError(int v)
+				{
+					val=v;
+					s[20]={NULL};
+				}
+		};
+		int operator[](int x)
+		{
+			if(x>10)
+			throw ArrayOutofRangeError(x);
+		return x;
+		}
+};
+int main()
+{
+	int brr[20];
+	int d,i=40,val;
+		try
+		{
+			d=brr[i];
+		}
+	catch(Safearray :: ArrayOutofRangeError(int val))
+	{
+		cout<<"\n the error is becoz index is:"<<val;
+	}
+}

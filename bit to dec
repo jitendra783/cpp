@@ -1,0 +1,30 @@
+#include<iostream>
+using namespace std;
+class Bintodec
+{
+	int dec;
+	public:
+		Bintodec(int bin)
+		{
+			int num,rem,base=1;
+			    num = bin;
+    while (num > 0)
+    {
+        rem = num % 10;
+        dec = dec + rem * base;
+        num = num / 10 ;
+        base = base * 2;
+    }
+        }
+        void print()
+        {
+        	cout<<"the decimal no. is:"<<dec;
+		}
+};
+int main()
+{
+	int x;
+	cin>>x;
+	Bintodec b=x;
+	b.print();
+}

@@ -1,0 +1,62 @@
+#include<iostream>
+using namespace std;
+class Media
+{
+	char title[20];
+	char me_name[20];
+	int me_id;
+	public:
+		void get_media()
+		{
+			cin>>title;
+			cin>>me_name;
+			cin>>me_id;
+		}
+		void put_media()
+		{
+			cout<<title;
+			cout<<me_name;
+			cout<<me_id;
+		}
+};
+class Book:public Media
+{
+	int pgs;
+	char subject[20];
+	public:
+		void get_book()
+		{
+			cin>>pgs;
+			cin>>subject;
+		}
+		void put_book()
+		{
+			cout<<pgs;
+			cout<<subject;
+		}
+};
+class Cd:public Media,public Book
+{
+	int size;
+	char name[20];
+	public:
+		void get_cd()
+		{
+			cin>>size;
+			cin>>name;
+		}
+		void put_cd()
+		{
+			cout<<size;
+			cout<<name;
+		}
+};
+int main()
+{
+	Media m;
+	m.get_media();
+	Book b;
+	b.get_media();
+	Cd c;
+	c.get_media();
+}
